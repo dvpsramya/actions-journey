@@ -1,0 +1,16 @@
+name: inspect
+on: push
+jobs:
+ inspect:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Get the repository
+      uses: actions/checkout@v4
+    - name: Get Kernel details
+      run: uname -a
+    - name: List the files
+      run: find .
+    - name: Count repository files
+      run: |
+       echo "Number of files:"
+       find . -type f | wc -l
