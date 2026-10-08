@@ -1,0 +1,19 @@
+name: parallel jobs
+on: push
+jobs:
+ lint:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Running lint
+      run: echo "Linting is done"  
+ unit-tests:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Perform unit tests
+      run: echo "Unit test is done"  
+ package:
+   runs-on: ubuntu-latest
+   needs: [lint, unit-tests]
+   steps:
+    - name: Package the build
+      run: echo "Package is done"  
