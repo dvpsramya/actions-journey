@@ -1,0 +1,22 @@
+name: Notify Workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: "Deployment environment"
+        required: true
+        type: string
+    secrets:
+      NOTIFY_TOKEN:
+        required: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print environment
+        env:
+          DEPLOY_ENV: ${{ inputs.environment }}
+        run: echo "Environment is $DEPLOY_ENV"
