@@ -1,0 +1,14 @@
+name: Add guardrails
+on: push
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true  
+jobs:
+ checkout:
+  runs-on: ubuntu-latest
+  timeout-minutes: 10  
+  steps:
+   - name: checkout repository
+     uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+   - name: No.of files
+     run: find . -type f | wc -l    
